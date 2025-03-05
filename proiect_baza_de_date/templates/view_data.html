@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vizualizare Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8); /* Pentru a face fundalul ușor transparent */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #555;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        .actions a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .actions a.edit {
+            background-color: #28a745;
+        }
+        .actions a.delete {
+            background-color: #dc3545;
+        }
+        .actions a:hover {
+            opacity: 0.8;
+        }
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #fff; /* Schimbăm culoarea textului în alb */
+            background-color: #28a745; /* Setăm culoarea de fundal verde */
+            padding: 10px 20px; /* Ajustăm spațiul în jurul textului */
+            border-radius: 4px; /* Rotunjim colțurile */
+            text-decoration: none;
+        }
+        .back-home:hover {
+            opacity: 0.8;
+            text-decoration: none; /* Evităm sublinierea atunci când mouse-ul este peste buton */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vizualizare Date</h1>
+
+        <div class="section">
+            <h2>Produse</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Denumire</th>
+                        <th>Pret</th>
+                        <th>Descriere</th>
+                        <th>Stoc</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produs in produse %}
+                        <tr>
+                            <td>{{ produs.Denumire }}</td>
+                            <td>{{ produs.Pret }}</td>
+                            <td>{{ produs.Descriere }}</td>
+                            <td>{{ produs.Stoc }}</td>
+                            <td class="actions">
+                                <a href="{{ url_for('update_data', id=produs.ID_Produs) }}" class="edit">Editare</a>
+                                <a href="{{ url_for('delete_data', id=produs.ID_Produs) }}" class="delete">Stergere</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Clienti</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Prenume</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clienti %}
+                        <tr>
+                            <td>{{ client.Nume }}</td>
+                            <td>{{ client.Prenume }}</td>
+                            <td>{{ client.Email }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Angajati</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Prenume</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for angajat in angajati %}
+                        <tr>
+                            <td>{{ angajat.Nume }}</td>
+                            <td>{{ angajat.Prenume }}</td>
+                            <td>{{ angajat.Email }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a class="back-home" href="{{ url_for('index') }}">Acasa</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adăugare Produs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #F8F8FF;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: calc(50% - 5px); /* Setăm lățimea butoanelor la jumătate din lățimea containerului și aplicăm spațiu între ele */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        /* Stiluri pentru butonul Acasă */
+        .home-button {
+            width: calc(50% - 5px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .home-button:hover {
+            background-color: #218838;
+        }
+        /* Container pentru butoane */
+        .button-container {
+            display: flex;
+            justify-content: space-between; /* Aliniere orizontală cu spațiu egal între elemente */
+        }
+    </style>
+</head>
+<body>
+    <h1>Adăugare Produs</h1>
+    <form action="{{ url_for('add_data') }}" method="POST">
+        <label for="denumire">Denumire:</label><br>
+        <input type="text" id="denumire" name="denumire" required><br>
+        <label for="pret">Preț:</label><br>
+        <input type="number" id="pret" name="pret" required><br>
+        <label for="descriere">Descriere:</label><br>
+        <input type="text" id="descriere" name="descriere"><br>
+        <label for="stoc">Stoc:</label><br>
+        <input type="number" id="stoc" name="stoc" required><br><br>
+        <!-- Container pentru butoane -->
+        <div class="button-container">
+            <input type="submit" value="Adaugă Produs">
+            <!-- Butonul de Acasă -->
+            <a href="/" class="home-button">Acasă</a>
+        </div>
+    </form>
+</body>
+</html>

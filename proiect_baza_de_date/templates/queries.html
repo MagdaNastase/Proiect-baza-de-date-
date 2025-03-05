@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interogări</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 800px;
+            background-image: url('https://images.unsplash.com/photo-1551040921-22a8552acb0d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        a.button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            text-decoration: none;
+            color: #fff;
+            background-color: green;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Interogări</h1>
+
+        <h2>Top 3 produse cu stoc mic</h2>
+        <ul>
+            {% for produs in produse_stoc_mic %}
+                <li>{{ produs.Denumire }} - Stoc: {{ produs.Stoc }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Produse cu preț mare</h2>
+        <ul>
+            {% for produs in produse_pret_mare %}
+                <li>{{ produs.Denumire }} - Preț: {{ produs.Pret }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Produse cu descriere necompletă</h2>
+        <ul>
+            {% for produs in produse_descriere_necompleta %}
+                <li>{{ produs.Denumire }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Top 5 produse mai scumpe de 50</h2>
+        <ul>
+            {% for produs in produse_mai_scumpe %}
+                <li>{{ produs.Denumire }} - Preț: {{ produs.Pret }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Top 5 produse cu denumire lungă</h2>
+        <ul>
+            {% for produs in produse_nume_lung %}
+                <li>{{ produs.Denumire }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Clienți cu comenzi</h2>
+        <ul>
+            {% for client, comanda in clienti_cu_comenzi %}
+                <li>{{ client.Nume }} {{ client.Prenume }} - Comanda ID: {{ comanda.ID_Comanda }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Angajați cu comenzi</h2>
+        <ul>
+            {% for angajat, comanda in angajati_cu_comenzi %}
+                <li>{{ angajat.Nume }} {{ angajat.Prenume }} - Comanda ID: {{ comanda.ID_Comanda }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Top 5 produse cele mai vândute</h2>
+        <ul>
+            {% for produs in produse_cele_mai_vandute %}
+                <li>{{ produs.Denumire }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Număr total de produse</h2>
+        <p>{{ numar_produse }}</p>
+
+        <h2>Prețul mediu al produselor, lei </h2>
+        <p>{{ pret_mediu }}</p>
+    </div>
+
+    <!-- Butonul Acasă -->
+    <a href="/" class="button">Acasă</a>
+
+</body>
+</html>
